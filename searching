@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian</title>
+    <style>
+        body{
+            background-color: rgb(246, 246, 201);
+            color: rgb(186, 209, 194);
+            font-family: sans-serif;
+        }
+        .container{
+            text-align: center;
+        }
+        section{
+            max-width: 1000px;
+            text-align: center;
+            background-color: rgb(79, 160, 149);
+            color: black;
+            margin: 4% auto;
+            border-radius: 5px;
+            border: none;
+            padding: 3px;
+        }
+        #hasil{
+            border: 2px solid black;
+            padding: 2px;
+            width: 17%;
+            border-radius: 5px;
+            margin: 2% auto;
+        }
+        section input[type="text"]{
+            border: none;
+            border-radius: 4px;
+            padding: 3px;
+            background-color: rgb(21, 52, 98);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Punny Web</h1>
+        <section>
+            <h2 id="title"></h2>
+            <input type="text" name="countBarSearch" id="countBarSearch" onkeyup="HitungDanCari()">
+            <p id="data"></p>
+            <p id="hasil">Jumlah Karakter : 0</p>
+    </section>
+    </div>
+<script>
+    let kalimat = {
+        "status" : true,
+        "data" : {
+            "artist" : "Westife",
+            "songTitle" : "I have a dream",
+            "songLyrics" : "I have a dream a song to sing\nTo help me cope with anything\nIf you see the wonder (wonder) of a fairy tale\nYou can take the future even if you fail",
+            "myprofile" : "Yusra Budiman Hasibuan / 211110993 IF C Class and Object"
+        }
+    }
+    let artist = kalimat.data.artist;
+    title.innerHTML = artist;
+
+    function HitungDanCari() {
+        let lyrics = document.getElementById("data");
+        let count = document.getElementById("hasil");
+        let searching = document.getElementById("countBarSearch").value;
+
+        let artist_ = kalimat.data.artist;
+        let lyrics_ = kalimat.data.songLyrics.replaceAll("\n","<br>");
+        let profile_ = kalimat.data.myprofile;
+
+        if (searching.toLowerCase() == "i have a dream") {
+            lyrics.innerHTML = lyrics_;
+            count.innerHTML = "Jumlah Karakter :"+ lyrics_.length;
+        } else if(searching.toLowerCase() == "my profile"){
+            lyrics.innerHTML = profile_;
+            count.innerHTML = "Jumlah Karakter :"+ profile_.length;
+        }else{
+            lyrics.innerHTML = "";
+            count.innerHTML = "Jumlah Karakter :" + searching.length;
+        }
+    }
+</script>    
+</body>
+</html>
